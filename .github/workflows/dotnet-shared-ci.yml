@@ -1,0 +1,16 @@
+name: .NET Shared CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      reason: 
+        description: "Why do you want to run this workflow?"
+        required: true        
+
+jobs:
+  build:
+    uses: SolidifyDemo/actions-training-221205-shared/.github/workflows/shared-dotnet-ci.yml@616b0fe0c6145525bee2c9efcbab161f91ec9815
