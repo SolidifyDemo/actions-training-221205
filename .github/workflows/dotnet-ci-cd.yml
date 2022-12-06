@@ -13,6 +13,7 @@ jobs:
     name: "Deploy to dev"
     environment: 
       name: dev
+    needs: [build]
     runs-on: unbuntu-latest
     steps:
     - name: "Testing workflow"
@@ -22,15 +23,27 @@ jobs:
     name: "Deploy to test"
     environment: 
       name: test
+    needs: [deploy_dev]
     runs-on: unbuntu-latest
     steps:
     - name: "Testing workflow"
       run: echo "testing testing"
 
+  run_test:
+    name: "Running tests"
+    environment: 
+      name: test
+    needs: [deploy_dev]
+    runs-on: unbuntu-latest
+    steps:
+    - name: "Testing workflow"
+      run: echo "testing testing"
+      
   deploy_prod:
     name: "Deploy to prod"
     environment: 
       name: prod
+    needs: [deploy_test, run_test]
     runs-on: unbuntu-latest
     steps:
     - name: "Testing workflow"
