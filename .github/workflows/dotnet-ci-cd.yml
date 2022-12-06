@@ -16,8 +16,26 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-    - name: "Testing workflow"
-      run: echo "testing testing"
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v2.0.8
+      with:
+        name: webapp
+        path: webapp
+
+    - name: Login via Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIAL }}
+
+    - name: Deploy web app
+      id: deploywebapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: "actions-demo-api"
+        package: webapp
+
+    - name: az cli logout
+      run: az logout   
 
   deploy_test:
     name: "Deploy to test"
