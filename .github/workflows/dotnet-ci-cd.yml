@@ -13,6 +13,7 @@ jobs:
     name: "Deploy to dev"
     environment: 
       name: dev
+      url: ${{ steps.deploywebapp.outputs.webapp-url }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
