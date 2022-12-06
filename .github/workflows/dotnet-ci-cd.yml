@@ -1,0 +1,37 @@
+name: .NET CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: SolidifyDemo/actions-training-221205-shared/.github/workflows/shared-dotnet-ci.yml@41e88b745948e2da04fd6f53b8c78bfcbfc55f38
+
+  deploy_dev:
+    name: "Deploy to dev"
+    environment: 
+      name: dev
+    runs-on: unbuntu-latest
+    steps:
+    - name: "Testing workflow"
+      run: echo "testing testing"
+
+  deploy_test:
+    name: "Deploy to test"
+    environment: 
+      name: test
+    runs-on: unbuntu-latest
+    steps:
+    - name: "Testing workflow"
+      run: echo "testing testing"
+
+  deploy_prod:
+    name: "Deploy to prod"
+    environment: 
+      name: prod
+    runs-on: unbuntu-latest
+    steps:
+    - name: "Testing workflow"
+      run: echo "testing testing"
