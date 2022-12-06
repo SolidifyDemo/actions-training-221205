@@ -13,4 +13,4 @@ on:
 
 jobs:
   build:
-    uses: SolidifyDemo/actions-training-221205-shared/.github/workflows/shared-dotnet-ci.yml@f162a1f6a88c254c33c4c0782cd38524a33ab1ab
+    uses: SolidifyDemo/actions-training-221205-shared/.github/workflows/shared-dotnet-ci.yml@41e88b745948e2da04fd6f53b8c78bfcbfc55f38
