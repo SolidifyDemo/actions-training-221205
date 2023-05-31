@@ -32,7 +32,7 @@ jobs:
       id: deploywebapp
       uses: azure/webapps-deploy@v2
       with:
-        app-name: "actions-demo-api"
+        app-name: "actions-demo-230531"
         package: webapp
 
     - name: az cli logout
